@@ -1,0 +1,213 @@
+/* Import Google Font */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Background with Animated Elements */
+body {
+    background: linear-gradient(45deg, #1e3c72, #2a5298);
+    background-size: 400% 400%;
+    animation: gradientBG 10s infinite alternate;
+    overflow: hidden;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+/* Background Gradient Animation */
+@keyframes gradientBG {
+    0% { background-position: 0% 50%; }
+    100% { background-position: 100% 50%; }
+}
+
+/* Floating Icons (Stars, Triangles, Diamonds) */
+.floating-icon {
+    position: absolute;
+    opacity: 0.75;
+    animation: floatRandom 10s infinite alternate ease-in-out;
+}
+
+/* Star Icon */
+.star {
+    width: 12px;
+    height: 12px;
+    background: #FFD700;
+    clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+}
+
+/* Triangle Icon */
+.triangle {
+    width: 0;
+    height: 0;
+    border-left: 12px solid transparent;
+    border-right: 12px solid transparent;
+    border-bottom: 20px solid #ff6b6b;
+}
+
+/* Diamond Icon */
+.diamond {
+    width: 14px;
+    height: 14px;
+    background: #00f2fe;
+    transform: rotate(45deg);
+}
+
+/* Random Floating Animations */
+@keyframes floatRandom {
+    0% { transform: translateY(0px) rotate(0deg); }
+    50% { transform: translateY(30px) rotate(180deg); }
+    100% { transform: translateY(0px) rotate(360deg); }
+}
+
+/* Position Floating Icons */
+.floating-icon:nth-child(1) { top: 5%; left: 15%; animation-duration: 18s; }
+.floating-icon:nth-child(2) { top: 10%; left: 90%; animation-duration: 15s; }
+.floating-icon:nth-child(3) { top: 35%; left: 80%; animation-duration: 18s; }
+.floating-icon:nth-child(4) { top: 70%; left: 10%; animation-duration: 20s; }
+.floating-icon:nth-child(5) { top: 85%; left: 80%; animation-duration: 22s; }
+.floating-icon:nth-child(6) { top: 50%; left: 20%; animation-duration: 22s; }
+
+/* Glassmorphism Container */
+.container {
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(12px);
+    padding: 16px;
+    border-radius: 12px;
+    box-shadow: 0 0px 5px 3px rgba(0, 0, 0, 0.2);
+    width: 75%;
+    max-width: 280px;
+    text-align: center;
+    z-index: 1;
+}
+
+/* Title */
+h1 {
+    font-size: 22px;
+    color: #fff;
+    margin-bottom: 10px;
+}
+
+/* Form */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+/* Smaller Input Fields */
+input[type="text"], input[type="datetime-local"] {
+    width: 100%;
+    padding: 6px;
+    font-size: 12px;
+    border: none;
+    border-radius: 5px;
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+    text-align: center;
+    box-shadow: 1px 1px 8px rgba(0, 0, 0, 0.1);
+}
+
+input::placeholder {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+/* Add Button */
+button {
+    background: #ff6b6b;
+    color: white;
+    border: none;
+    padding: 8px;
+    font-size: 14px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button:hover {
+    background: #ff4757;
+}
+
+/* Task List - Flexbox Layout */
+#task-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+    padding: 0;
+    margin-top: 10px;
+    max-width: 600px;
+}
+
+/* Task Item Styling */
+#task-list li {
+    flex: 1 1 calc(50% - 10px); /* 2 columns */
+    max-width: 45%; /* Ensures proper spacing */
+    background: rgba(255, 255, 255, 0.2);
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 6px;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+    color: #fff;
+    transition: transform 0.3s ease-in-out;
+    text-align: center;
+}
+
+/* If more than 4 tasks, they should align in a grid format */
+@media (min-width: 768px) {
+    #task-list li {
+        flex: 1 1 calc(33.33% - 10px); /* 3 columns on larger screens */
+        max-width: 30%;
+    }
+}
+
+@media (min-width: 1024px) {
+    #task-list li {
+        flex: 1 1 calc(25% - 10px); /* 4 columns for very large screens */
+        max-width: 23%;
+    }
+}
+
+/* Delete Button */
+.delete-btn {
+    background: #ff4d4d;
+    color: white;
+    border: none;
+    padding: 3px;
+    font-size: 10px;
+    border-radius: 2px;
+    cursor: pointer;
+    transition: 0.3s;
+    text-decoration: none; /* Remove hyperlink underline */
+}
+
+.delete-btn:hover {
+    background: #ff0000;
+}
+
+/* Overdue Task */
+.overdue {
+    color: #ff4757 !important;
+    font-weight: bold;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+    .container {
+        width: 90%;
+    }
+
+    input, button {
+        font-size: 12px;
+        padding: 6px;
+    }
+}
